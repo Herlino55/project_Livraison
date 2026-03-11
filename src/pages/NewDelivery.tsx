@@ -132,7 +132,7 @@ export function NewDelivery() {
             />
 
             <Input
-              label="Prix transport (€) *"
+              label="Prix transport (FCFA) *"
               type="number"
               step="0.01"
               {...register('price')}

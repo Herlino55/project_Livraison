@@ -33,7 +33,7 @@ export function DeliveryCard({ delivery, onClick }: DeliveryCardProps) {
         </div>
         <div className="flex items-center gap-2">
           <DollarSign className="w-4 h-4" />
-          <span className="font-medium text-gray-900">{delivery.price.toFixed(2)} €</span>
+          <span className="font-medium text-gray-900">{delivery.price.toFixed(2)} FCFA</span>
         </div>
       </div>
     </button>

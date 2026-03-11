@@ -228,7 +228,7 @@ export function DeliveryDetail() {
 
           <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
             <span className="text-gray-700 font-medium">Prix transport</span>
-            <span className="text-2xl font-bold text-blue-600">{delivery.price.toFixed(2)} €</span>
+            <span className="text-2xl font-bold text-blue-600">{delivery.price.toFixed(2)} FCFA</span>
           </div>
 
           {productPhotos.length > 0 && (
