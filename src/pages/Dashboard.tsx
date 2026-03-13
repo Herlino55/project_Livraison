@@ -95,7 +95,7 @@ export function Dashboard() {
     }
   };
 
-  if (loading) {
+  if (loading || !user) {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -152,14 +152,16 @@ export function Dashboard() {
           <div className="bg-white rounded-lg shadow p-8 text-center">
             <Package className="w-12 h-12 text-gray-400 mx-auto mb-3" />
             <p className="text-gray-600">Aucune livraison en cours</p>
-            <Button
-              onClick={() => navigate('/deliveries/new')}
-              variant="primary"
-              size="sm"
-              className="mt-4"
-            >
-              Créer une nouvelle livraison
-            </Button>
+            {user.email === "herlindongmo@gmail.com" && ( 
+              <Button
+                onClick={() => navigate('/deliveries/new')}
+                variant="primary"
+                size="sm"
+                className="mt-4"
+              >
+                Créer une nouvelle livraison
+              </Button>
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
