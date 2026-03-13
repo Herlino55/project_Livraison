@@ -31,7 +31,6 @@ export function Deliveries() {
       let query = supabase
         .from('deliveries')
         .select('*')
-        .eq('user_id', user.id)
         .order('created_at', { ascending: false });
 
       if (statusFilter !== 'all') {
@@ -59,7 +58,7 @@ export function Deliveries() {
     );
   });
 
-  if (loading) {
+  if (loading || !user) {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -74,13 +73,15 @@ export function Deliveries() {
           <h1 className="text-3xl font-bold text-gray-900">Livraisons</h1>
           <p className="text-gray-600 mt-1">{filteredDeliveries.length} livraison(s)</p>
         </div>
-        <Button
-          onClick={() => navigate('/deliveries/new')}
-          className="flex items-center gap-2"
-        >
-          <PlusCircle className="w-5 h-5" />
-          Nouvelle livraison
-        </Button>
+        {user.email === "herlindongmo@gmail.com" && ( 
+          <Button
+            onClick={() => navigate('/deliveries/new')}
+            className="flex items-center gap-2"
+          >
+            <PlusCircle className="w-5 h-5" />
+            Nouvelle livraison
+          </Button>
+        )}
       </div>
 
       <div className="bg-white rounded-lg shadow p-4 space-y-4">

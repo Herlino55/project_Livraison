@@ -41,34 +41,29 @@ export function Dashboard() {
         supabase
           .from('deliveries')
           .select('id', { count: 'exact' })
-          .eq('user_id', user.id)
           .gte('created_at', today)
           .lte('created_at', todayEnd),
 
         supabase
           .from('deliveries')
           .select('id', { count: 'exact' })
-          .eq('user_id', user.id)
           .gte('created_at', weekStart),
 
         supabase
           .from('deliveries')
           .select('price')
-          .eq('user_id', user.id)
           .eq('status', 'delivered'),
 
         supabase
           .from('deliveries')
           .select('*')
-          .eq('user_id', user.id)
           .in('status', ['pending', 'in_progress'])
           .order('scheduled_date', { ascending: true })
           .limit(5),
 
         supabase
           .from('deliveries')
-          .select('status', { count: 'exact' })
-          .eq('user_id', user.id),
+          .select('status', { count: 'exact' }),
       ]);
 
       const todayCount = todayResult.count || 0;
@@ -79,7 +74,6 @@ export function Dashboard() {
       const deliveredCount = await supabase
         .from('deliveries')
         .select('id', { count: 'exact' })
-        .eq('user_id', user.id)
         .eq('status', 'delivered');
 
       const successRate = totalDeliveries > 0
