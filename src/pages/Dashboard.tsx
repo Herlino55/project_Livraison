@@ -124,7 +124,7 @@ export function Dashboard() {
           color="green"
         />
         <StatsCard
-          title="Revenus totaux"
+          title="Total des Livraisons"
           value={`${stats.totalRevenue.toFixed(2)} FCFA`}
           icon={DollarSign}
           color="yellow"

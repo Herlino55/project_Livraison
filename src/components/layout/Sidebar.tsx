@@ -1,5 +1,6 @@
 import { X, Hop as Home, Package, Users } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuthStore } from '../../store/authStore';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -7,6 +8,7 @@ interface SidebarProps {
 }
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
+  const { user } = useAuthStore();
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + '/');
@@ -66,6 +68,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           </nav>
 
           <div className="p-4 border-t border-gray-800">
+            <p className="text-xs text-primary-foreground/50 mb-1">{user?.email}</p>
             <p className="text-xs text-gray-400">DelivTrack v1.0</p>
           </div>
         </div>
